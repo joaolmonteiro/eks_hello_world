@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: ghcr.io/jlmonteiroaxa/eks_hello_world/hello-world:latest
+        image: ghcr.io/jlmonteiro/eks_hello_world/hello-world:latest
         ports:
         - containerPort: 80
 
