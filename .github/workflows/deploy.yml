@@ -53,3 +53,15 @@ jobs:
       run: |
         kubectl rollout restart deployment hello-world --namespace=default
 
+    - name: Deploy POD to EKS
+      run: |
+        kubectl apply -f k8s/frontend_deployment.yaml
+
+    - name: Deploy SERVICE to EKS
+      run: |
+        kubectl apply -f k8s/frontend_service.yaml
+
+    - name: Restart Kubernetes Deployment
+      run: |
+        kubectl rollout restart deployment frontend --namespace=default
+
