@@ -13,7 +13,7 @@
   <script>
     async function sendName() {
       const name = document.getElementById('nameInput').value;
-      const response = await fetch('BACKEND_URL/api/hello', 
+      const response = await fetch('BACKEND_URLS/api/hello', 
       { method: 'POST', 
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ name }) 
