@@ -55,11 +55,11 @@ jobs:
 
     - name: Deploy POD to EKS
       run: |
-        kubectl apply -f k8s/frontend_deployment.yaml
+        kubectl apply -f k8s/frontend-deployment.yaml
 
     - name: Deploy SERVICE to EKS
       run: |
-        kubectl apply -f k8s/frontend_service.yaml
+        kubectl apply -f k8s/frontend-service.yaml
 
     - name: Restart Kubernetes Deployment
       run: |
