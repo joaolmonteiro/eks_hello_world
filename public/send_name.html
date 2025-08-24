@@ -13,7 +13,7 @@
   <script>
     async function sendName() {
       const name = document.getElementById('nameInput').value;
-      const response = await fetch('/api/hello', { method: 'POST', body: JSON.stringify({ name }) });
+      const response = await fetch('http://a18141353efd64942ba0091266a04bf5-989381253.eu-west-1.elb.amazonaws.com/api/hello', { method: 'POST', body: JSON.stringify({ name }) });
       const data = await response.json();
       document.getElementById('responseText').innerText = data.message;
     }
