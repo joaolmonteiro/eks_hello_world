@@ -40,6 +40,10 @@ jobs:
     - name: Update kubeconfig
       run: |
         aws eks update-kubeconfig --name education-eks-EmfcX93A --region eu-west-1
+   
+    - name: Deploy ConfigMap to EKS
+      run: |
+        kubectl apply -f k8s/backup-config.yaml
 
     - name: Deploy POD to EKS
       run: |
