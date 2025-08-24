@@ -14,7 +14,7 @@
     async function sendName() {
       backendUrl = config.BACKEND_URL;
       const name = document.getElementById('nameInput').value;
-      const response = await fetch('api/hello', 
+      const response = await fetch('http://a18141353efd64942ba0091266a04bf5-989381253.eu-west-1.elb.amazonaws.com/api/hello', 
       { method: 'POST', 
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ name }) 
