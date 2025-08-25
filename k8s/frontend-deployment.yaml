@@ -24,4 +24,4 @@ spec:
       volumes:
       - name: config-volume
         configMap:
-          name: frontend-config
+          name: frontend-config #./kubectl create configmap frontend-config --from-file=config.json (executed in deploy.yml)

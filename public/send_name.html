@@ -22,7 +22,7 @@
   async function sendName() {
    if (!backendUrl) await loadConfig();
    const name = document.getElementById('nameInput').value;
-   const response = await fetch(`${backendUrl}/api/hello`, {
+   const response = await fetch(`${backendUrl}/hello`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ name })
