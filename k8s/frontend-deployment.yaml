@@ -17,9 +17,11 @@ spec:
         image: ghcr.io/joaolmonteiro/eks_hello_world/hello-world:latest
         ports:
         - containerPort: 80
-        env:
-        - name: BACKEND_URL
-          valueFrom:
-            configMapKeyRef:
-              name: backend-config
-              key: BACKEND_URL
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/share/nginx/html/config.json
+          subPath: config.json
+      volumes:
+      - name: config-volume
+        configMap:
+          name: frontend-config

@@ -6,21 +6,30 @@
 </head>
 <body>
   <h1>Hello World App</h1>
-  <input type="text" id="nameInput" placeholder="Enter your nameXYZ" />
+  <input type="text" id="nameInput" placeholder="Enter your nameXYZW" />
   <button onclick="sendName()">Say Hello</button>
   <p id="responseText"></p>
 
   <script>
-    async function sendName() {
-      const name = document.getElementById('nameInput').value;
-      const response = await fetch('http://a18141353efd64942ba0091266a04bf5-989381253.eu-west-1.elb.amazonaws.com/api/hello', 
-      { method: 'POST', 
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ name }) 
-      });
-      const data = await response.json();
-      document.getElementById('responseText').innerText = data.message;
-    }
+  let backendUrl;
+  
+  async function loadConfig() {
+   const res = await fetch('/config.json');
+   const config = await res.json();
+   backendUrl = config.BACKEND_URL;
+ }
+
+  async function sendName() {
+   if (!backendUrl) await loadConfig();
+   const name = document.getElementById('nameInput').value;
+   const response = await fetch(`${backendUrl}/api/hello`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name })
+  });
+   const data = await response.json();
+   document.getElementById('responseText').innerText = data.message;
+  }
   </script>
 </body>
 </html>

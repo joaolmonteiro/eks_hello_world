@@ -43,8 +43,8 @@ jobs:
    
     - name: Deploy ConfigMap to EKS
       run: |
-        kubectl apply -f k8s/backend-config.yaml
-
+        kubectl create configmap frontend-config --from-file=config.json
+        
     - name: Deploy POD to EKS
       run: |
         kubectl apply -f k8s/frontend-deployment.yaml
