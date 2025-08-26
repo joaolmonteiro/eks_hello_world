@@ -48,7 +48,7 @@
           body: JSON.stringify({ name })
         });
         const data = await response.json();
-        document.getElementById('responseText').innerText = data.message;
+       // document.getElementById('responseText').innerText = data.message;
       } catch (error) {
        // console.error('Error sending name:', error);
        // document.getElementById('responseText').innerText = 'Something went wrong.';
