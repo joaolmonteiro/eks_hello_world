@@ -41,17 +41,17 @@ jobs:
       run: |
         aws eks update-kubeconfig --name education-eks-VxAaQBxE --region eu-west-1
 
-    - name: Deploy POD to EKS
+    - name: Restart Kubernetes Deployment
       run: |
-        kubectl apply -f k8s/frontend-deployment1.yaml
+        kubectl rollout restart deployment frontend1 --namespace=default
+
+    - name: Restart Kubernetes Deployment
+      run: |
+        kubectl rollout restart deployment frontend2 --namespace=default
 
     - name: Deploy SERVICE to EKS
       run: |
         kubectl apply -f k8s/frontend-service1.yaml
-
-    - name: Deploy POD to EKS
-      run: |
-        kubectl apply -f k8s/frontend-deployment2.yaml
 
     - name: Deploy SERVICE to EKS
       run: |
@@ -65,7 +65,4 @@ jobs:
       run: |
         kubectl apply -f k8s/frontend-ingress.yaml
 
-    - name: Restart Kubernetes Deployment
-      run: |
-        kubectl rollout restart deployment frontend --namespace=default
 
