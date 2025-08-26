@@ -41,11 +41,27 @@ jobs:
       run: |
         aws eks update-kubeconfig --name education-eks-VxAaQBxE --region eu-west-1
 
-    - name: Restart Kubernetes Deployment
+    - name: Delete Deployment1
+      run: | 
+         kubectl delete deployment frontend1
+
+    - name: Create Deployment1
+      run: | 
+         kubectl apply -f k8s/frontend-deployment1.yaml
+
+    - name: Delete Deployment2
+      run: | 
+         kubectl delete deployment frontend2
+
+    - name: Create Deployment2
+      run: | 
+         kubectl apply -f k8s/frontend-deployment2.yaml
+
+    - name: Restart Kubernetes Deployment1
       run: |
         kubectl rollout restart deployment frontend1 --namespace=default
 
-    - name: Restart Kubernetes Deployment
+    - name: Restart Kubernetes Deployment2
       run: |
         kubectl rollout restart deployment frontend2 --namespace=default
 
@@ -59,10 +75,10 @@ jobs:
 
     - name: Delete Ingress
       run: |
-        kubectl delete ingress frontend-ingress
+        kubectl delete ingress fanout-ingress
 
     - name: Deploy Ingress
       run: |
-        kubectl apply -f k8s/frontend-ingress.yaml
+        kubectl apply -f k8s/fanout-ingress.yaml
 
 
