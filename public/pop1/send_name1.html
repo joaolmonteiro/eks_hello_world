@@ -33,8 +33,6 @@
         const config = await res.json();
         backendUrl = config.BACKEND_URL;
       } catch (error) {
-  const raw = await res.text();
-  console.error('Raw response:', raw);
   document.getElementById('responseText').innerText = `Could not load config: ${error.message}`;
 }
 
