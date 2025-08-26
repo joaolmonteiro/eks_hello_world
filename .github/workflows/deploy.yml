@@ -57,14 +57,6 @@ jobs:
       run: | 
          kubectl apply -f k8s/frontend-deployment2.yaml
 
-    - name: Restart Kubernetes Deployment1
-      run: |
-        kubectl rollout restart deployment frontend1 --namespace=default
-
-    - name: Restart Kubernetes Deployment2
-      run: |
-        kubectl rollout restart deployment frontend2 --namespace=default
-
     - name: Deploy SERVICE to EKS
       run: |
         kubectl apply -f k8s/frontend-service1.yaml
