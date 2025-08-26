@@ -34,7 +34,7 @@
         backendUrl = config.BACKEND_URL;
       } catch (error) {
         console.error('Failed to load config:', error);
-        document.getElementById('responseText').innerText = 'Could not load config.';
+        document.getElementById('responseText').innerText = `Could not load config: ${error.message}`;
       }
     }
 
@@ -50,8 +50,8 @@
         const data = await response.json();
         document.getElementById('responseText').innerText = data.message;
       } catch (error) {
-        console.error('Error sending name:', error);
-        document.getElementById('responseText').innerText = 'Something went wrong.';
+       // console.error('Error sending name:', error);
+       // document.getElementById('responseText').innerText = 'Something went wrong.';
       }
     }
   </script>
