@@ -41,6 +41,10 @@ jobs:
       run: |
         aws eks update-kubeconfig --name education-eks-VxAaQBxE --region eu-west-1
 
+    - name: Delete configMap
+      run: |
+        kubectl delete configmap ingress-config
+
     - name: Create configMap
       run: |
         kubectl create configmap ingress-config --from-file=config.json
