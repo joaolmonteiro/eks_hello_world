@@ -29,7 +29,7 @@
 
     async function loadConfig() {
       try {
-        const res = await fetch('/usr/share/nginx/html/config.json');
+        const res = await fetch('/config.json');
         const config = await res.json();
         backendUrl = config.BACKEND_URL;
       } catch (error) {
@@ -42,7 +42,7 @@
       try {
         if (!backendUrl) await loadConfig();
         const name = document.getElementById('nameInput').value;
-        const response = await fetch(`${backendUrl}/hello`, {
+        const response = await fetch(`http://a08b4c65468934dd18b1ab31d4583572-1057240797.eu-west-1.elb.amazonaws.com/hello`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name })
