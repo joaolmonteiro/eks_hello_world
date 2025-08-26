@@ -14,22 +14,30 @@
   let backendUrl;
   
   async function loadConfig() {
-   const res = await fetch('/config.json');
-   const config = await res.json();
-   backendUrl = config.BACKEND_URL;
- }
+    const res = await fetch('/config.json');
+    const config = await res.json();
+    backendUrl = config.BACKEND_URL;
+    document.getElementById('responseText').innerText = backendUrl;
+    return config;
+}
 
-  async function sendName() {
-   if (!backendUrl) await loadConfig();
-   const name = document.getElementById('nameInput').value;
-   const response = await fetch(`${backendUrl}/hello`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name })
-  });
-   const data = await response.json();
-   document.getElementById('responseText').innerText = data.message;
+async function sendName() {
+  try {
+    if (!backendUrl) await loadConfig();
+    const name = document.getElementById('nameInput').value;
+    const response = await fetch(`${backendUrl}/hello`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name })
+    });
+    const data = await response.json();
+    document.getElementById('responseText').innerText = data.message;
+  } catch (error) {
+    console.error('Error sending name:', error);
+    document.getElementById('responseText').innerText = 'Something went wrong.';
   }
+}
+
   </script>
 </body>
 </html>
