@@ -49,10 +49,6 @@ jobs:
       run: |
         kubectl create configmap ingress-config --from-file=config.json
 
-    - name: Deploy ConfigMap
-      run: |
-        kubectl apply -f k8s/ingress-route-configmap.yaml
-
     - name: Delete Deployment1
       run: | 
          kubectl delete deployment frontend1
