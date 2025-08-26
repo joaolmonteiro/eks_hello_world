@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend1
+  template:
+    metadata:
+      labels:
+        app: frontend1
+    spec:
+      containers:
+      - name: frontend1
+        image: ghcr.io/joaolmonteiro/eks_hello_world/hello-world:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: config-volume
+          mountPath: /usr/share/nginx/html/config.json
+          subPath: config.json
+      volumes:
+      - name: config-volume
+        configMap:
+          name: frontend-config #./kubectl create configmap frontend-config --from-file=config.json (executed in deploy.yml)

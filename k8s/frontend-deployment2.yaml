@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: frontend2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: frontend2
   template:
     metadata:
       labels:
-        app: frontend
+        app: frontend2
     spec:
       containers:
-      - name: frontend
+      - name: frontend2
         image: ghcr.io/joaolmonteiro/eks_hello_world/hello-world:latest
         ports:
         - containerPort: 80

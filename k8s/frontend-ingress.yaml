@@ -11,11 +11,20 @@ spec:
   rules:
   - http:
       paths:
-      - path: /
-        pathType: Prefix
+      - path: /send_name1.html
+        pathType: Exact
         backend:
           service:
-            name: frontend-service
+            name: frontend-service1
             port:
               number: 80
-              
+
+      - path: /send_name2.html
+        pathType: Exact
+        backend:
+          service:
+            name: frontend-service2
+            port:
+              number: 80
+
+
