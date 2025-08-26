@@ -41,6 +41,14 @@ jobs:
       run: |
         aws eks update-kubeconfig --name education-eks-VxAaQBxE --region eu-west-1
 
+    - name: Create configMap
+      run: |
+        kubectl create configmap ingress-config --from-file=config.json
+
+    - name: Deploy ConfigMap
+      run: |
+        kubectl apply -f k8s/ingress-route-configmap.yaml
+
     - name: Delete Deployment1
       run: | 
          kubectl delete deployment frontend1
@@ -64,10 +72,6 @@ jobs:
     - name: Deploy SERVICE to EKS
       run: |
         kubectl apply -f k8s/frontend-service2.yaml
-
-    - name: Delete Ingress
-      run: |
-        kubectl delete ingress fanout-ingress
 
     - name: Deploy Ingress
       run: |

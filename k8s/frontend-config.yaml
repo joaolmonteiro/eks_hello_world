@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: ingress-config
-data:
-  BACKEND_URL: "http://ac06fe7804e65402882e6c46b35726b0-1540510094.eu-west-1.elb.amazonaws.com/"
