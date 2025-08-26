@@ -51,11 +51,19 @@ jobs:
 
     - name: Deploy POD to EKS
       run: |
-        kubectl apply -f k8s/frontend-deployment.yaml
+        kubectl apply -f k8s/frontend-deployment1.yaml
 
     - name: Deploy SERVICE to EKS
       run: |
-        kubectl apply -f k8s/frontend-service.yaml
+        kubectl apply -f k8s/frontend-service1.yaml
+
+    - name: Deploy POD to EKS
+      run: |
+        kubectl apply -f k8s/frontend-deployment2.yaml
+
+    - name: Deploy SERVICE to EKS
+      run: |
+        kubectl apply -f k8s/frontend-service2.yaml
 
     - name: Delete Ingress
       run: |
