@@ -59,7 +59,7 @@ jobs:
 
     - name: Delete Ingress
       run: |
-        kubectl delete ingress fronend-ingress
+        kubectl delete ingress frontend-ingress
 
     - name: Deploy Ingress
       run: |
