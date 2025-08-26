@@ -40,14 +40,6 @@ jobs:
     - name: Update kubeconfig
       run: |
         aws eks update-kubeconfig --name education-eks-VxAaQBxE --region eu-west-1
-   
-    - name: Delete ConfigMap to EKS
-      run: |
-        kubectl delete configmap frontend-config
-
-    - name: Deploy ConfigMap to EKS
-      run: |
-        kubectl create configmap frontend-config --from-file=config.json
 
     - name: Deploy POD to EKS
       run: |
