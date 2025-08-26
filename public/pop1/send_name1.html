@@ -29,7 +29,7 @@
 
     async function loadConfig() {
       try {
-        const res = await fetch('/config.json');
+        const res = await fetch('../config.json');
         const config = await res.json();
         backendUrl = config.BACKEND_URL;
       } catch (error) {
