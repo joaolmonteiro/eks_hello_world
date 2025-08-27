@@ -43,7 +43,7 @@ jobs:
 
     - name: Delete configMap
       run: |
-        kubectl delete configmap ingress-config
+        kubectl delete configmap ingress-config -n hello-world-preprod
 
     - name: Create configMap
       run: |
