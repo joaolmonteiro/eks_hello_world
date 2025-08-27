@@ -2,15 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend2
+  namespace: hello-world-preprod
+  labels:
+    environment: preprod
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: frontend2
+      environment: preprod
   template:
     metadata:
       labels:
         app: frontend2
+        environment: preprod
     spec:
       containers:
       - name: frontend2
@@ -19,9 +24,9 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: config-volume
-          mountPath: /usr/share/nginx/html/pop2/config.json
+          mountPath: /usr/share/nginx/html/pop1/config.json
           subPath: config.json
       volumes:
       - name: config-volume
         configMap:
-          name: ingress-config #./kubectl create configmap frontend-config --from-file=config.json (executed in deploy.yml)
+          name: ingress-config

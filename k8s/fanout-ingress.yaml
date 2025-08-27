@@ -2,6 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: fanout-ingress
+  namespace: hello-world-preprod
+  labels:
+    environment: preprod
   annotations:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
