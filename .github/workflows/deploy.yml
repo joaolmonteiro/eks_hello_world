@@ -51,30 +51,30 @@ jobs:
 
     - name: Delete Deployment1
       run: | 
-         kubectl delete deployment frontend1
+         kubectl delete deployment frontend1 -n hello-world-preprod
 
     - name: Create Deployment1
       run: | 
-         kubectl apply -f k8s/frontend-deployment1.yaml
+         kubectl apply -f k8s/frontend-deployment1.yaml -n hello-world-preprod
 
     - name: Delete Deployment2
       run: | 
-         kubectl delete deployment frontend2
+         kubectl delete deployment frontend2 -n hello-world-preprod
 
     - name: Create Deployment2
       run: | 
-         kubectl apply -f k8s/frontend-deployment2.yaml
+         kubectl apply -f k8s/frontend-deployment2.yaml -n hello-world-preprod
 
     - name: Deploy SERVICE to EKS
       run: |
-        kubectl apply -f k8s/frontend-service1.yaml
+        kubectl apply -f k8s/frontend-service1.yaml -n hello-world-preprod
 
     - name: Deploy SERVICE to EKS
       run: |
-        kubectl apply -f k8s/frontend-service2.yaml
+        kubectl apply -f k8s/frontend-service2.yaml -n hello-world-preprod
 
     - name: Deploy Ingress
       run: |
-        kubectl apply -f k8s/fanout-ingress.yaml
+        kubectl apply -f k8s/fanout-ingress.yaml -n hello-world-preprod
 
 
