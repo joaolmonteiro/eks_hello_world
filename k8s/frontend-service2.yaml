@@ -7,7 +7,8 @@ metadata:
     environment: preprod
 spec:
   selector:
-    app: frontend
+    app: frontend2
+    environment: preprod
   ports:
   - protocol: TCP
     port: 80

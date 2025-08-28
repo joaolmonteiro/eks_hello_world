@@ -7,9 +7,9 @@ metadata:
     environment: preprod
 spec:
   selector:
-    app: frontend1
+    app: frontend
   ports:
   - protocol: TCP
     port: 80
     targetPort: 80
-  type: LoadBalancer
+  type: ClusterIP

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: frontend2
   namespace: hello-world-preprod
   labels:
     environment: preprod
@@ -9,30 +9,24 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend
+      app: frontend2
       environment: preprod
   template:
     metadata:
       labels:
-        app: frontend
+        app: frontend2
         environment: preprod
     spec:
       containers:
-      - name: frontend
+      - name: frontend2
         image: ghcr.io/joaolmonteiro/eks_hello_world/hello-world:latest
         ports:
         - containerPort: 80
         volumeMounts:
-        - name: config-volume1
-          mountPath: /usr/share/nginx/html/pop1/config.json
-          subPath: config.json
         - name: config-volume2
           mountPath: /usr/share/nginx/html/pop2/config.json
           subPath: config.json
       volumes:
-      - name: config-volume1
-        configMap:
-          name: ingress-config
       - name: config-volume2
         configMap:
           name: ingress-config
