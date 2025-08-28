@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend1
+  name: deployfrontend1
   namespace: hello-world-preprod
   labels:
     environment: preprod
