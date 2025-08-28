@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend1
+  name: frontend
   namespace: hello-world-preprod
   labels:
     environment: preprod
@@ -9,16 +9,16 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: frontend1
+      app: frontend
       environment: preprod
   template:
     metadata:
       labels:
-        app: frontend1
+        app: frontend
         environment: preprod
     spec:
       containers:
-      - name: frontend1
+      - name: frontend
         image: ghcr.io/joaolmonteiro/eks_hello_world/hello-world:latest
         ports:
         - containerPort: 80
