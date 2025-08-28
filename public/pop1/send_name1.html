@@ -2,34 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Hello World App1</title>
+  <title>Hello Sender</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    input, button {
+      padding: 8px;
+      margin: 10px 0;
+    }
+    #responseText {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello World App 1</h1>
-  <input type="text" id="nameInput" placeholder="Enter your nameXYZW" />
-  <button onclick="sendName()">Say Hello</button>
-  <p id="responseText"></p>
+  <h1>Say Hello</h1>
+  <input type="text" id="nameInput" placeholder="Enter your name" />
+  <button onclick="sendName()">Send</button>
+  <div id="responseText"></div>
 
   <script>
-  let backendUrl;
-  
-  async function loadConfig() {
-   const res = await fetch('config.json');
-   const config = await res.json();
-   backendUrl = config.BACKEND_URL;
- }
+    let backendUrl;
 
-  async function sendName() {
-   if (!backendUrl) await loadConfig();
-   const name = document.getElementById('nameInput').value;
-   const response = await fetch(`${backendUrl}/hello`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name })
-  });
-   const data = await response.json();
-   document.getElementById('responseText').innerText = data.message;
-  }
+    async function loadConfig() {
+      try {
+        const res = await fetch('/config.json');
+        const config = await res.json();
+        backendUrl = config.BACKEND_URL;
+      } catch (error) {
+  document.getElementById('responseText').innerText = `Could not load config: ${error.message}`;
+}
+
+    }
+
+    async function sendName() {
+      try {
+//        if (!backendUrl) await loadConfig();
+        const name = document.getElementById('nameInput').value;
+        const response = await fetch(`http://a08b4c65468934dd18b1ab31d4583572-1057240797.eu-west-1.elb.amazonaws.com/hello`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name })
+        });
+        const data = await response.json();
+        document.getElementById('responseText').innerText = data.message;
+      } catch (error) {
+        console.error('Error sending name:', error);
+        document.getElementById('responseText').innerText = 'Something went wrong.';
+      }
+    }
   </script>
 </body>
 </html>
