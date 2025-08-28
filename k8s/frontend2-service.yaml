@@ -4,11 +4,11 @@ metadata:
   name: frontend2-service
   namespace: hello-world-preprod
   labels:
-    app: frontend1
+    app: frontend2
     environment: preprod
 spec:
   selector:
-    app: frontend1
+    app: frontend2
     environment: preprod
   ports:
     - protocol: TCP
