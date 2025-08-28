@@ -65,17 +65,17 @@ jobs:
       run: | 
           kubectl rollout restart deployment deployfrontend2 --namespace=hello-world-preprod
 
-  #  - name: Delete service frontend1-service
-  #    run: |
-  #      kubectl delete service/frontend1-service -n hello-world-preprod
+    - name: Delete service frontend1-service
+      run: |
+        kubectl delete service/frontend1-service -n hello-world-preprod
 
     - name: Deploy SERVICE frontend1-service to EKS
       run: |
         kubectl apply -f k8s/frontend1-service.yaml -n hello-world-preprod
 
-  #  - name: Delete service frontend2-service
-  #    run: |
-  #      kubectl delete service/frontend2-service -n hello-world-preprod
+    - name: Delete service frontend2-service
+      run: |
+        kubectl delete service/frontend2-service -n hello-world-preprod
 
     - name: Deploy SERVICE frontend2-service to EKS
       run: |
