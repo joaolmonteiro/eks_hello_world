@@ -3,8 +3,6 @@ kind: Ingress
 metadata:
   name: fanout-ingress
   namespace: hello-world-preprod
-  labels:
-    environment: preprod
   annotations:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
@@ -18,14 +16,14 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: frontend-service1
+            name: frontend1-service
             port:
               number: 80
       - path: /pop2/
         pathType: Prefix
         backend:
           service:
-            name: frontend-service2
+            name: frontend2-service
             port:
               number: 80
       - path: /hello
@@ -35,4 +33,3 @@ spec:
             name: backend-api-service1
             port:
               number: 3000
-              

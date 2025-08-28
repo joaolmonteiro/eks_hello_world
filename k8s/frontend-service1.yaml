@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service1
+  name: frontend1-service
   namespace: hello-world-preprod
   labels:
+    app: frontend1
     environment: preprod
 spec:
   selector:
     app: frontend1
     environment: preprod
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-  type: ClusterIP
+    - protocol: TCP
+      port: 80
+      targetPort: 80
