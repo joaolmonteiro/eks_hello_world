@@ -11,13 +11,31 @@
   <p id="responseText"></p>
 
   <script>
-  let backendUrl;
+
   
-  async function loadConfig() {
-   const res = await fetch('config.json');
-   const config = await res.json();
-   backendUrl = config.BACKEND_URL;
- }
+let backendUrl = null;
+
+async function loadConfig() {
+  try {
+    const res = await fetch('config.json');
+    if (!res.ok) {
+      throw new Error(`Failed to load config.json: ${res.status} ${res.statusText}`);
+    }
+
+    const config = await res.json();
+
+    if (!config.BACKEND_URL) {
+      throw new Error('BACKEND_URL is missing in config.json');
+    }
+
+    backendUrl = config.BACKEND_URL;
+    console.log('Config loaded successfully:', backendUrl);
+  } catch (error) {
+    console.error('Error loading config:', error);
+    alert('Configuration failed to load. Please try again later.');
+  }
+}
+
 
   async function sendName() {
    if (!backendUrl) await loadConfig();
