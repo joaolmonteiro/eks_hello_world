@@ -49,21 +49,13 @@ jobs:
       run: |
         kubectl create configmap ingress-config --from-file=config.json -n hello-world-preprod
 
-    - name: Delete Deployment1
+    - name: Delete Deployment
       run: | 
-         kubectl delete deployment frontend1 -n hello-world-preprod
+         kubectl delete deployment frontend -n hello-world-preprod
 
-    - name: Create Deployment1
+    - name: Create Deployment
       run: | 
-         kubectl apply -f k8s/frontend-deployment1.yaml -n hello-world-preprod
-
-    - name: Delete Deployment2
-      run: | 
-         kubectl delete deployment frontend2 -n hello-world-preprod
-
-    - name: Create Deployment2
-      run: | 
-         kubectl apply -f k8s/frontend-deployment2.yaml -n hello-world-preprod
+         kubectl apply -f k8s/frontend-deployment.yaml -n hello-world-preprod
 
     - name: Deploy SERVICE to EKS
       run: |
