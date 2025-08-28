@@ -10,7 +10,7 @@ spec:
     repoURL: https://github.com/joaolmonteiro/eks_hello_world.git
     targetRevision: HEAD
     path: k8s
-  destimation:
+  destination:
     server: https://kubernetes.default.svc
     namespace: hello-world-preprod
 
