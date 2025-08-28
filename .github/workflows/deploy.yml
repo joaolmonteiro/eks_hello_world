@@ -57,9 +57,17 @@ jobs:
       run: | 
          kubectl apply -f k8s/frontend-deployment.yaml -n hello-world-preprod
 
+    - name: Delete service frontend-service1
+      run: |
+        kubectl delete service/frontend-service1 -n hello-world-preprod
+
     - name: Deploy SERVICE to EKS
       run: |
         kubectl apply -f k8s/frontend-service1.yaml -n hello-world-preprod
+
+    - name: Delete service frontend-service2
+      run: |
+        kubectl delete service/frontend-service2 -n hello-world-preprod
 
     - name: Deploy SERVICE to EKS
       run: |
