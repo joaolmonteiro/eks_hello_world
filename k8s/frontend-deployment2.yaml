@@ -24,7 +24,7 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: config-volume2
-          mountPath: /usr/share/nginx/html/pop2/config.json
+          mountPath: /usr/share/nginx/html/bbb/config.json
           subPath: config.json
       volumes:
       - name: config-volume2
