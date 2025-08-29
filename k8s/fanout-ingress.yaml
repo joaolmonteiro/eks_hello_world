@@ -12,18 +12,18 @@ spec:
   rules:
   - http:
       paths:
-      - path: /aaa
-        pathType: Prefix
-        backend:
-          service:
-            name: frontend2-service
-            port:
-              number: 80
-      - path: /bbb
+      - path: /aaa/
         pathType: Prefix
         backend:
           service:
             name: frontend1-service
+            port:
+              number: 80
+      - path: /bbb/
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: frontend2-service
             port:
               number: 80
       - path: /hello
