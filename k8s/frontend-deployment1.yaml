@@ -23,9 +23,9 @@ spec:
         volumeMounts:
         - name: config-volume1
           mountPath: /usr/share/nginx/html/aaa/config.json
-          subPath: config.json
+          subPath: config1.json
       volumes:
       - name: config-volume1
         configMap:
-          name: ingress-config
+          name: ingress-config1
       

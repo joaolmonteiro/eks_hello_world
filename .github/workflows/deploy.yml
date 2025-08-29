@@ -41,13 +41,21 @@ jobs:
       run: |
         aws eks update-kubeconfig --name education-eks-VxAaQBxE --region eu-west-1
 
-    - name: Delete configMap
+    - name: Delete configMap1
       run: |
-        kubectl delete configmap ingress-config -n hello-world-preprod
+        kubectl delete configmap ingress-config1 -n hello-world-preprod
 
-    - name: Create configMap
+    - name: Create configMap1
       run: |
-        kubectl create configmap ingress-config --from-file=config.json -n hello-world-preprod
+        ./kubectl create configmap ingress-config1 --from-file=public/aaa/config1.json -n hello-world-preprod
+
+    - name: Delete configMap2
+      run: |
+        kubectl delete configmap ingress-config2 -n hello-world-preprod
+
+    - name: Create configMap2
+      run: |
+        ./kubectl create configmap ingress-config2 --from-file=public/bbb/config2.json -n hello-world-preprod
 
     - name: Delete Deployment1
       run: | 
