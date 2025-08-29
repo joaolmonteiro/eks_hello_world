@@ -10,12 +10,10 @@ spec:
   selector:
     matchLabels:
       app: frontend1
-      environment: preprod
   template:
     metadata:
       labels:
         app: frontend1
-        environment: preprod
     spec:
       containers:
       - name: frontend1
