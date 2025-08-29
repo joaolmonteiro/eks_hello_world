@@ -19,13 +19,13 @@ spec:
             name: frontend2-service
             port:
               number: 80
-  #    - path: /aaa/
-  #      pathType: Prefix
-  #      backend:
-  #        service:
-  #          name: frontend1-service
-  #          port:
-  #            number: 80
+      - path: /aaa/
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend1-service
+            port:
+              number: 80
       - path: /hello
         pathType: Prefix
         backend:

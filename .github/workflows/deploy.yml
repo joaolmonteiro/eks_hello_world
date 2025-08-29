@@ -47,7 +47,7 @@ jobs:
 
     - name: Create configMap1
       run: |
-        ./kubectl create configmap ingress-config1 --from-file=public/aaa/config1.json -n hello-world-preprod
+        kubectl create configmap ingress-config1 --from-file=public/aaa/config1.json -n hello-world-preprod
 
     - name: Delete configMap2
       run: |
@@ -55,7 +55,7 @@ jobs:
 
     - name: Create configMap2
       run: |
-        ./kubectl create configmap ingress-config2 --from-file=public/bbb/config2.json -n hello-world-preprod
+        kubectl create configmap ingress-config2 --from-file=public/bbb/config2.json -n hello-world-preprod
 
     - name: Delete Deployment1
       run: | 
