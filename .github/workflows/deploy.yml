@@ -25,10 +25,15 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build and push Docker image
+    - name: Build and push Docker image 1
       run: |
-        docker build -t ghcr.io/${{ github.repository }}/hello-world:latest .
-        docker push ghcr.io/${{ github.repository }}/hello-world:latest
+        docker build -t ghcr.io/${{ github.repository }}/hello-world1:latest .
+        docker push ghcr.io/${{ github.repository }}/hello-world1:latest
+
+    - name: Build and push Docker image 2
+      run: |
+        docker build -t ghcr.io/${{ github.repository }}/hello-world2:latest .
+        docker push ghcr.io/${{ github.repository }}/hello-world2:latest
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2

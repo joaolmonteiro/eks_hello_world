@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend1
-        image: ghcr.io/joaolmonteiro/eks_hello_world/hello-world:latest
+        image: ghcr.io/joaolmonteiro/eks_hello_world/hello-world1:latest
         ports:
         - containerPort: 80
         volumeMounts:
