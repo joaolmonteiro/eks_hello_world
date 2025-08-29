@@ -20,7 +20,7 @@ spec:
             port:
               number: 80
       - path: /bbb/
-        pathType: ImplementationSpecific
+        pathType: Prefix
         backend:
           service:
             name: frontend2-service
